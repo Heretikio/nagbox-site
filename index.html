@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nagbox: self-hosted reminders that refuse to be forgotten</title>
+    <link rel="icon" href="/favicon.ico" sizes="48x48">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="description" content="A self-hosted, AGPL reminder app that recreates Google Inbox's triage model. One stream, four verbs, and push notifications that actually reach your phone. One docker command to install.">
+  <meta name="theme-color" content="#16161a">
+  <meta property="og:image" content="https://nagbox.io/og-banner.png">
+    <meta property="og:title" content="Nagbox: self-hosted reminders that refuse to be forgotten">
+  <meta property="og:description" content="A self-hosted, AGPL reminder app that recreates Google Inbox's triage model. One stream, four verbs, and push notifications that actually reach your phone. One docker command to install.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nagbox">
+  <meta property="og:url" content="https://nagbox.io/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Nagbox: self-hosted reminders that refuse to be forgotten">
+  <meta name="twitter:description" content="A self-hosted, AGPL reminder app that recreates Google Inbox's triage model. One stream, four verbs, and push notifications that actually reach your phone.">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="wordmark" href="#top" aria-label="Nagbox home">
+        <span class="wordmark-badge" aria-hidden="true">N</span>
+        <span class="wordmark-text">nagbox</span>
+      </a>
+      <nav aria-label="Site">
+        <a href="https://github.com/Heretikio/nagbox">Source</a>
+        <a href="#self-host">Self-host</a>
+        <a href="#waitlist">Waitlist</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- SECTION 1: HERO -->
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1>
+            <span>One stream.</span>
+            <span>Four verbs.</span>
+            <span class="accent">Reminders that fire.</span>
+          </h1>
+          <p class="subhead">Nagbox recreates Google Inbox's triage model for tasks. Snoozed items come back on top and stay there until done. Reminders that reach your phone, hosted for you in minutes.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#waitlist">Get started</a>
+            <a class="btn btn-secondary" href="#self-host">Or self-host it</a>
+          </div>
+          <p class="hero-support">Hosted at nagbox.io, or run it yourself. Open source, AGPL, your data always exportable.</p>
+        </div>
+        <div class="hero-demo">
+          <div id="demo"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: THE GOOGLE INBOX HOOK -->
+    <section class="section reveal" id="inbox">
+      <div class="container narrow">
+        <p class="eyebrow">The missing half</p>
+        <h2>Google killed Inbox in 2019. Half of it stayed dead.</h2>
+        <p>Everyone who rebuilt Inbox rebuilt the email half. Nobody rebuilt the other half: the reminders that lived in the same stream as everything else, snoozed with one tap, and came back exactly when you told them to. That was the part that made Inbox feel like it was working for you.</p>
+        <p>Nagbox is that half. Not an email client, not a project tracker, not a kanban board. Just the tickler file Google built, then shot.</p>
+        <blockquote class="pull-line">
+          <p>For the other 90% of life: the 30-second obligations that just need to come back at the right moment and refuse to be forgotten.</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- SECTION 3: FEATURE BLOCKS -->
+    <section class="section reveal" id="features">
+      <div class="container">
+        <p class="eyebrow">What it does</p>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="verb-chips" aria-hidden="true">
+              <span class="chip chip-done">Done</span>
+              <span class="chip chip-snooze">Snooze</span>
+              <span class="chip chip-pin">Pin</span>
+              <span class="chip chip-sweep">Sweep</span>
+            </div>
+            <h3>Triage with four verbs</h3>
+            <p>Everything lands in one stream. You clear it with Done, Snooze, Pin, or Sweep, by keyboard or by swipe. Done archives, never deletes. Sweep bulk-clears a whole section in one motion and skips anything pinned, with one undo for the whole batch. Clearing a section earns you a sunrise. That is the entire interaction model, and it is enough.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Reminders that actually reach your phone</h3>
+            <p>Every self-hosted task app fails at the same point: getting a notification to your phone without a vendor cloud. Vikunja's web push is an open PR. Donetick's self-hosted push is broken. tududi has none. Nagbox ships first-party Web Push out of the box: keys generate themselves at first boot, and notifications reach desktop browsers, Android, and iOS home-screen PWAs. No Firebase, no CalDAV server, no companion app, no account with anyone. ntfy, Gotify, email, and webhooks too, if that is how your house runs.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Snooze that comes back swinging</h3>
+            <p>Snoozed items do not vanish into a list you will never reopen. When a snooze fires, the item resurfaces at the top of your stream, pre-pinned, with a chip explaining why it is back. It sits there and nags by presence until you deal with it. A missed notification loses nothing, because the stream is the system of record and the push was only ever a tap on the shoulder.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: NAGS AND THE PRIVATE PROFILE -->
+    <section class="section reveal" id="profile">
+      <div class="container narrow">
+        <p class="eyebrow">Nags, with consent</p>
+        <h2>It gets to know you. It tells no one.</h2>
+        <p>Nagbox can ask you optional getting-to-know-you questions and deal you the occasional daily card. Answer them or ignore them. What you answer builds an interest profile that makes its nags smarter over time.</p>
+        <p>That profile lives in one place: your own database, on your own hardware, in the same SQLite file as everything else. It is not synced anywhere, sold to anyone, or used to train anything. It exists so your reminder app can be less dumb about you, and for no other reason. Turn the whole thing off with one setting if you would rather stay strangers.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 5: SELF-HOST -->
+    <section class="section reveal" id="self-host">
+      <div class="container narrow">
+        <p class="eyebrow">Self-host</p>
+        <h2>Install it before your coffee cools</h2>
+        <p>One container, one binary inside it, one SQLite file for all your data. No Postgres to babysit, no env vars required, no config file to write. Run the line below, open your browser, create the admin account. Backup is copying a directory.</p>
+        <div class="code-block">
+          <pre><code id="install-cmd">docker run -d -p 8080:8080 -v ./data:/data ghcr.io/heretikio/nagbox</code></pre>
+          <button class="copy-btn" type="button" data-copy-target="install-cmd">Copy</button>
+        </div>
+        <p class="support-line">Bare binaries for Linux and macOS too, if Docker is not your thing. Migrations run themselves on upgrade.</p>
+        <p><a class="btn btn-secondary" href="https://github.com/Heretikio/nagbox#quickstart">Read the quickstart</a></p>
+      </div>
+    </section>
+
+    <!-- SECTION 6: HOSTED WAITLIST -->
+    <section class="section reveal" id="waitlist">
+      <div class="container narrow">
+        <p class="eyebrow">Hosted</p>
+        <h2>Or let us run it for you</h2>
+        <p>A hosted version is coming at nagbox.io. Same app, same features, running on our hardware instead of yours. It sells convenience, never features: nothing is held back from self-hosters, and nothing ever will be. Hosted tenants can export their complete SQLite database anytime, one click, because leaving has to be easy for staying to mean anything.</p>
+        <form class="waitlist-form" id="waitlist-form" action="/api/waitlist" method="post" novalidate>
+          <label class="visually-hidden" for="waitlist-email">Email address</label>
+          <input id="waitlist-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" inputmode="email">
+          <button class="btn btn-primary" type="submit">Join the hosted waitlist</button>
+        </form>
+        <p class="support-line" id="waitlist-note">No spam. One email when the beta opens.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 7: TRUST BLOCK -->
+    <section class="section reveal" id="trust">
+      <div class="container narrow">
+        <p class="eyebrow">Trust</p>
+        <h2>The parts that can't be walked back</h2>
+        <p>These are commitments, stated plainly so you can quote them back at us later.</p>
+        <ul class="pinned-list">
+          <li class="pinned-item">
+            <svg class="pin-icon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M16 3a1 1 0 0 1 .95.68l1.2 3.61 2.56 2.56a1 1 0 0 1-.4 1.66l-4.55 1.51-3.05 5.6a1 1 0 0 1-1.59.23l-2.4-2.4-4.6 4.6a1 1 0 0 1-1.41-1.41l4.6-4.6-2.4-2.4a1 1 0 0 1 .23-1.59l5.6-3.05 1.51-4.55A1 1 0 0 1 13.15 3z"/></svg>
+            <span>AGPL-3.0, DCO, no CLA, ever.</span>
+          </li>
+          <li class="pinned-item">
+            <svg class="pin-icon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M16 3a1 1 0 0 1 .95.68l1.2 3.61 2.56 2.56a1 1 0 0 1-.4 1.66l-4.55 1.51-3.05 5.6a1 1 0 0 1-1.59.23l-2.4-2.4-4.6 4.6a1 1 0 0 1-1.41-1.41l4.6-4.6-2.4-2.4a1 1 0 0 1 .23-1.59l5.6-3.05 1.51-4.55A1 1 0 0 1 13.15 3z"/></svg>
+            <span>Self-hosted stays complete and free forever.</span>
+          </li>
+          <li class="pinned-item">
+            <svg class="pin-icon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M16 3a1 1 0 0 1 .95.68l1.2 3.61 2.56 2.56a1 1 0 0 1-.4 1.66l-4.55 1.51-3.05 5.6a1 1 0 0 1-1.59.23l-2.4-2.4-4.6 4.6a1 1 0 0 1-1.41-1.41l4.6-4.6-2.4-2.4a1 1 0 0 1 .23-1.59l5.6-3.05 1.51-4.55A1 1 0 0 1 13.15 3z"/></svg>
+            <span>SSO never paywalled.</span>
+          </li>
+          <li class="pinned-item">
+            <svg class="pin-icon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M16 3a1 1 0 0 1 .95.68l1.2 3.61 2.56 2.56a1 1 0 0 1-.4 1.66l-4.55 1.51-3.05 5.6a1 1 0 0 1-1.59.23l-2.4-2.4-4.6 4.6a1 1 0 0 1-1.41-1.41l4.6-4.6-2.4-2.4a1 1 0 0 1 .23-1.59l5.6-3.05 1.51-4.55A1 1 0 0 1 13.15 3z"/></svg>
+            <span>Hosted tenants export their SQLite anytime.</span>
+          </li>
+        </ul>
+        <p class="pinned-caption">Pinned. Sweep skips these.</p>
+        <p>The license does the enforcing. Under AGPL with DCO sign-offs and no CLA, every contributor keeps their copyright. Relicensing would need consent from all of them, which means it cannot quietly happen. We built the rug so it does not pull.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 8: FAQ -->
+    <section class="section reveal" id="faq">
+      <div class="container narrow">
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions you were about to ask</h2>
+        <details class="faq-item">
+          <summary>Why SQLite?</summary>
+          <p>Because one database engine halves the support surface and your entire life fits in one file. SQLite in WAL mode handles a household's reminders without breaking a sweat, backup is a file copy, and restore is a file copy back. A Postgres option is on the roadmap for when someone actually needs it, which is later than you think.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How does push work without a vendor cloud?</summary>
+          <p>Web Push is an open standard (RFC 8030) that browsers already implement. Nagbox generates its own VAPID keys at first boot and talks directly to your browser's push service. No Firebase console, no Apple developer account, no relay service, no telemetry. It works on desktop browsers, Android with the browser closed, and iOS 16.4+ once you add Nagbox to your home screen. UnifiedPush endpoints are supported for the fully degoogled. Onboarding ends with a test push to your phone so you know it works before you trust it.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why not Vikunja or Donetick?</summary>
+          <p>Use them if they fit. Vikunja and tududi are project organizers; Donetick manages recurring household chores. Nagbox is for everything that is not a project: the 30-second obligations that need to resurface at the right moment. And the deciding detail is delivery. As of August 2026, Vikunja's web push is an open PR, Donetick's self-hosted push is broken, and tududi has none. A reminder app that cannot reach your phone is a list app.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is it really free?</summary>
+          <p>Yes, structurally. The self-hosted app is AGPL-3.0 and feature-complete forever, SSO included. The hosted service at nagbox.io charges for running the servers, never for features. And because contributors keep their copyright under DCO with no CLA, nobody, including us, has the legal power to take the code proprietary later.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What about email? Inbox was an email app.</summary>
+          <p>Not in v1, on purpose. Nagbox borrows Inbox's interaction model, not its mail. The data model quietly reserves the door, so email ingestion can arrive someday without a rewrite, but it is explicitly unpromised. An honest small scope now beats an abandoned large one later.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Who builds this?</summary>
+          <p>A pseudonymous maintainer, under the Heretikio org. If that gives you pause, good, you are the right kind of paranoid, and the license is your answer. The code is fully open for audit, AGPL means any fork keeps every freedom you have today, and DCO with no CLA means the maintainer holds no special legal power over the project's future. You are trusting the code and the license, not a name. That is more than most apps with a founder photo can offer.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- SECTION 9: FOOTER -->
+  <footer class="site-footer">
+    <div class="container narrow">
+      <p class="footer-tagline">Nagbox. A reminder app that nags by presence.</p>
+      <p>AGPL-3.0-only. DCO, no CLA, ever.</p>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="https://github.com/Heretikio/nagbox">Source</a>
+        <a href="https://github.com/Heretikio/nagbox/tree/main/docs">Docs</a>
+        <a href="#demo">Demo</a>
+        <a href="#waitlist">Hosted waitlist</a>
+        <a href="https://github.com/Heretikio/nagbox/blob/main/SECURITY.md">Security</a>
+      </nav>
+      <p class="footer-antigoals">Not a kanban board. Not a project tracker. Not a calendar. On purpose.</p>
+      <p class="footer-memorial">Made in memory of Google Inbox, 2014 to 2019.</p>
+      <p class="footer-privacy">This page makes zero third-party requests.</p>
+    </div>
+  </footer>
+
+  <script src="site.js" defer></script>
+  <script src="demo.js" defer></script>
+</body>
+</html>

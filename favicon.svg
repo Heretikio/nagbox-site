@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <!-- Nagbox favicon (SVG) — the icon-dark master: mark on its own #16161a
+       rounded tile so it reads on any tab-bar background. Derived from
+       press/logo/icon-dark.svg; edit that master, not this file. -->
+  <rect width="48" height="48" rx="10.5" fill="#16161a"/>
+  <path d="M8 27 H18 L21.6 32 H26.4 L30 27 H40 V35 A6.5 6.5 0 0 1 33.5 41.5 H14.5 A6.5 6.5 0 0 1 8 35 Z" fill="#7f5af0"/>
+  <path d="M24 33.5 V11 M15 20 L24 11 L33 20" fill="none" stroke="#7f5af0" stroke-width="7.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
