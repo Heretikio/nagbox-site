@@ -1,0 +1,76 @@
+/* Nagbox agent (MCP) demo widget. Mounts into #agent-demo. Same dark language
+   as the hero demo. Pure HTML/CSS, opacity/transform reveals, no external requests. */
+
+.ad-wrap { margin: 1.5rem 0 1.25rem; }
+
+.ad-console {
+  background: #0c0c10;
+  border: 1px solid #2c2c36;
+  border-radius: 14px;
+  padding: 14px 14px 6px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .45);
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+.ad-head {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 2px 2px 12px;
+  border-bottom: 1px solid #23232b;
+  margin-bottom: 12px;
+}
+
+.ad-dots { display: flex; gap: 6px; }
+
+.ad-hdot { width: 8px; height: 8px; border-radius: 50%; background: #2c2c36; }
+.ad-hdot:first-child { background: #7f5af0; }
+
+.ad-title { font-size: 11px; color: #6c7280; letter-spacing: .04em; }
+
+.ad-msg {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .4s ease, transform .4s ease;
+  background: #16161a;
+  border: 1px solid #23232b;
+  border-left: 2px solid #2c2c36;
+  border-radius: 10px;
+  padding: 9px 11px;
+  margin-bottom: 9px;
+}
+
+.ad-msg.ad-in { opacity: 1; transform: none; }
+
+.ad-call { border-left-color: #7f5af0; }
+.ad-result { border-left-color: #2cb67d; }
+
+.ad-mhead { display: flex; align-items: center; gap: 7px; font-size: 11px; }
+
+.ad-role {
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #a78bfa;
+}
+
+.ad-role-nb { color: #2cb67d; }
+.ad-arrow { color: #6c7280; }
+.ad-tool { color: #fffffe; font-size: 12px; }
+
+.ad-pre {
+  margin: 7px 0 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: #c4c8d4;
+  font-family: inherit;
+}
+
+.ad-call .ad-pre { color: #9aa0b0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ad-msg { transition: none !important; }
+}

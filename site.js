@@ -39,25 +39,30 @@
     }
   }
 
-  /* ---------- Copy button ---------- */
+  /* ---------- Copy buttons ---------- */
+  /* Any element with data-copy-target (copies that node's text) or
+     data-copy-text (copies a literal string). Zero external requests. */
 
-  var copyBtn = document.querySelector(".copy-btn");
-  if (copyBtn) {
-    copyBtn.addEventListener("click", function () {
-      var target = document.getElementById(copyBtn.getAttribute("data-copy-target"));
-      if (!target) return;
-      var text = target.textContent;
+  var copyEls = document.querySelectorAll("[data-copy-target], [data-copy-text]");
+  Array.prototype.forEach.call(copyEls, function (btn) {
+    btn.addEventListener("click", function () {
+      var targetId = btn.getAttribute("data-copy-target");
+      var target = targetId ? document.getElementById(targetId) : null;
+      if (targetId && !target) return;
+      var text = target ? target.textContent : (btn.getAttribute("data-copy-text") || "");
+      var original = btn.textContent;
 
       function done() {
-        copyBtn.classList.add("copied");
-        copyBtn.textContent = "Copied";
+        btn.classList.add("copied");
+        btn.textContent = "Copied";
         window.setTimeout(function () {
-          copyBtn.classList.remove("copied");
-          copyBtn.textContent = "Copy";
+          btn.classList.remove("copied");
+          btn.textContent = original;
         }, 2000);
       }
 
       function fallbackSelect() {
+        if (!target) return;
         var range = document.createRange();
         range.selectNodeContents(target);
         var sel = window.getSelection();
@@ -71,7 +76,7 @@
         fallbackSelect();
       }
     });
-  }
+  });
 
   /* ---------- Waitlist form ---------- */
 

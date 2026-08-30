@@ -21,6 +21,7 @@
   
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="demo.css">
+  <link rel="stylesheet" href="agent-demo.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -33,6 +34,7 @@
       </a>
       <nav aria-label="Site">
         <a href="https://github.com/Heretikio/nagbox">Source</a>
+        <a href="#built-for-agents">Agents</a>
         <a href="#self-host">Self-host</a>
         <a href="#waitlist">Waitlist</a>
         <a href="#faq">FAQ</a>
@@ -110,6 +112,71 @@
         <h2>It gets to know you. It tells no one.</h2>
         <p>Nagbox can ask you optional getting-to-know-you questions and deal you the occasional daily card. Answer them or ignore them. What you answer builds an interest profile that makes its nags smarter over time.</p>
         <p>That profile lives in one place: your own database, on your own hardware, in the same SQLite file as everything else. It is not synced anywhere, sold to anyone, or used to train anything. It exists so your reminder app can be less dumb about you, and for no other reason. Turn the whole thing off with one setting if you would rather stay strangers.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 4b: BUILT FOR AGENTS (MCP) -->
+    <section class="section reveal" id="built-for-agents">
+      <div class="container narrow">
+        <p class="eyebrow">Built for agents</p>
+        <h2>Nagbox speaks MCP, so Claude or any agent can run your reminders.</h2>
+        <p>Nagbox ships a Model Context Protocol server. Point Claude Desktop, Claude Code, or any MCP-capable agent at it and your assistant can capture obligations, triage the stream, and work your nags for you. It acts as you, over an access token you mint in the app, and never sees your password or session cookie.</p>
+
+        <ul class="mcp-caps">
+          <li>
+            <span class="mcp-cap-name">Capture</span>
+            <span class="mcp-cap-desc"><code>nagbox_capture</code> creates a task or reminder, and can snooze it on the spot.</span>
+          </li>
+          <li>
+            <span class="mcp-cap-name">Triage with the four verbs</span>
+            <span class="mcp-cap-desc"><code>nagbox_done</code>, <code>nagbox_snooze</code>, <code>nagbox_pin</code>, and <code>nagbox_back</code>, one call each. <code>nagbox_sweep</code> clears a whole time window at once.</span>
+          </li>
+          <li>
+            <span class="mcp-cap-name">List and search</span>
+            <span class="mcp-cap-desc"><code>nagbox_list</code> reads the stream, snoozed queue, or done archive; <code>nagbox_search</code> runs full-text search across everything you can see.</span>
+          </li>
+          <li>
+            <span class="mcp-cap-name">Work the nags</span>
+            <span class="mcp-cap-desc"><code>nagbox_next_nag</code> pulls the top unanswered nag, <code>nagbox_answer_nag</code> replies, <code>nagbox_more_nags</code> asks for more.</span>
+          </li>
+        </ul>
+
+        <h3 class="mcp-subhead">One line to install</h3>
+        <div class="code-block">
+          <pre><code id="mcp-install">npx -y @nagbox/mcp</code></pre>
+          <button class="copy-btn" type="button" data-copy-target="mcp-install">Copy</button>
+        </div>
+        <p class="support-line">It speaks MCP over stdio, so your agent launches it. No global install, no daemon to run.</p>
+
+        <h3 class="mcp-subhead">Claude Desktop config</h3>
+        <div class="code-block code-block-stacked">
+          <div class="code-block-head">
+            <span class="code-block-name">claude_desktop_config.json</span>
+            <button class="copy-btn" type="button" data-copy-target="mcp-config">Copy</button>
+          </div>
+          <pre><code id="mcp-config">{
+  "mcpServers": {
+    "nagbox": {
+      "command": "npx",
+      "args": ["-y", "@nagbox/mcp"],
+      "env": {
+        "NAGBOX_URL": "https://nagbox.io",
+        "NAGBOX_TOKEN": "nbx_your_token_here"
+      }
+    }
+  }
+}</code></pre>
+        </div>
+        <p class="support-line">Mint the token in Settings &gt; Access tokens. It is shown once at creation, and revocable from the same screen. Self-hosting? Point <code>NAGBOX_URL</code> at your own origin and mint the token there.</p>
+
+        <h3 class="mcp-subhead">Watch an agent work it</h3>
+        <div id="agent-demo" class="ad-wrap"></div>
+        <p class="support-line">A real exchange, honest to the tool names and the text they return.</p>
+
+        <p class="mcp-tryit">
+          <button class="btn btn-secondary btn-soon" type="button" disabled aria-disabled="true">Live demo (opening soon)</button>
+          <span class="mcp-tryit-note">A hosted demo instance lands at demo.nagbox.io soon.</span>
+        </p>
       </div>
     </section>
 
@@ -214,9 +281,16 @@
         <a href="https://github.com/Heretikio/nagbox">Source</a>
         <a href="https://github.com/Heretikio/nagbox/tree/main/docs">Docs</a>
         <a href="#demo">Demo</a>
+        <a href="#built-for-agents">Agents</a>
         <a href="#waitlist">Hosted waitlist</a>
         <a href="https://github.com/Heretikio/nagbox/blob/main/SECURITY.md">Security</a>
       </nav>
+      <div class="footer-share">
+        <span class="footer-share-label">Share</span>
+        <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fnagbox.io" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a class="share-btn" href="mailto:?subject=Nagbox%3A%20self-hosted%20reminders%20that%20refuse%20to%20be%20forgotten&amp;body=Nagbox%20recreates%20Google%20Inbox%27s%20triage%20model%20for%20tasks.%20One%20stream%2C%20four%20verbs%2C%20and%20push%20that%20reaches%20your%20phone.%20Take%20a%20look%3A%20https%3A%2F%2Fnagbox.io">Email</a>
+        <button class="share-btn" type="button" data-copy-text="https://nagbox.io">Copy link</button>
+      </div>
       <p class="footer-antigoals">Not a kanban board. Not a project tracker. Not a calendar. On purpose.</p>
       <p class="footer-memorial">Made in memory of Google Inbox, 2014 to 2019.</p>
       <p class="footer-privacy">This page makes zero third-party requests.</p>
@@ -225,5 +299,6 @@
 
   <script src="site.js" defer></script>
   <script src="demo.js" defer></script>
+  <script src="agent-demo.js" defer></script>
 </body>
 </html>
